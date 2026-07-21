@@ -13,3 +13,7 @@ const messages = [
         date: new Date()
     }
 ]
+
+indexRouter.get('/', (req, res) => {
+    res.render('index', { messages: messages} )
+})
