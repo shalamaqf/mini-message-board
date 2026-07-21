@@ -2,9 +2,9 @@
     <body>
         <% messages.forEach((message) => { %>
             <ul>
-                <p>Message: <%= messages.text %> </p>
-                <p>Sent by: <%= messages.title %> </p>
-                <p>Time: <%= messages.date %> </p>
+                <p>Message: <%= message.text %> </p>
+                <p>Sent by: <%= message.title %> </p>
+                <p>Time: <%= message.date.toDateString() %> </p>
             </ul>
         <% }) %>
     </body>
