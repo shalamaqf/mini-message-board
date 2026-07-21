@@ -18,4 +18,9 @@ indexRouter.get('/', (req, res) => {
     res.render('index', { messages: messages} )
 })
 
+indexRouter.get('/new', (req, res) => {
+    res.render('new-message')
+})
+
+
 module.exports = indexRouter;
