@@ -1,0 +1,11 @@
+<html>
+    <body>
+        <% messages.forEach((message) => { %>
+            <ul>
+                <p>Message: <%= messages.text %> </p>
+                <p>Sent by: <%= messages.title %> </p>
+                <p>Time: <%= messages.date %> </p>
+            </ul>
+        <% }) %>
+    </body>
+</html>
