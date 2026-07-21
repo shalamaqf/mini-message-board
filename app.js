@@ -1,10 +1,11 @@
 const express = require('express');
 const app = express();
 const PORT = 3000;
+const path = require("node:path");
 
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
-})
+// set ejs
+app.set("views", path.join(__dirname, "views"));
+app.set("view engine", "ejs");
 
 app.listen(PORT, (error) => {
     if (error) {
