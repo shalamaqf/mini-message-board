@@ -29,10 +29,7 @@ indexRouter.get('/message/:id', (req, res) => {
     const message = messages.find(message => message.id === targetId);
 
     if (!message) {
-        return res.status(404).send(`
-        <p>Message is not found.</p>
-        <a href='/'>Go back to home</a>
-        `)
+        return res.status(404).render('message-not-found', { title: `Message's Not Found`})
     }
 
     res.render('message-details', { message: message, title: `Message's Details`});
