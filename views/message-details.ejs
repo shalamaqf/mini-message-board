@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <h1>Details:</h1>
+
+    <% if (message != undefined) { %>
+        <div class="details-container">
+            <p>Message: <%= message.text %></p>
+            <p>Sent By: <%= message.user %></p>
+            <p>Time: <%= message.date %></p>
+        </div>
+    <% } %>
+    <% else { %>
+        <h3>Message is not found.</h3>
+        <a href="/">Go back to home</a>
+    <% } %>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
