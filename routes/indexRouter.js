@@ -18,11 +18,26 @@ const messages = [
 ]
 
 indexRouter.get('/', (req, res) => {
+    console.log(messages)
     res.render('index', { messages: messages, title: 'Home Page'} )
 })
 
 indexRouter.get('/new', (req, res) => {
     res.render('new-message', { title: 'Add New Message' })
+})
+
+indexRouter.get('/message/:id', (req, res) => {
+    const targetId = req.params.id;
+    const message = messages.find(message => message.id === targetId);
+
+    if (!message) {
+        return res.status(404).send(`
+        <p>Message is not found.</p>
+        <a href='/'>Go back to home</a>
+        `)
+    }
+
+    res.render('message-details', { message: message, title: `Message's Details`});
 })
 
 indexRouter.post('/new', (req, res) => {
