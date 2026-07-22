@@ -14,6 +14,10 @@ app.use(express.urlencoded({ extended: true }));
 const indexRouter = require('./routes/indexRouter');
 
 app.use('/', indexRouter);
+app.use((req, res, next) => {
+    res.status(404).render('404');
+})
+
 
 app.listen(PORT, (error) => {
     if (error) {
