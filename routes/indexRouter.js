@@ -1,16 +1,15 @@
 const { Router } = require('express');
-const { randomUUID } = require('node:crypto');
 const indexRouter = Router();
 
 const messages = [
     {
-        id: randomUUID(),
+        id: 1,
         text: "Hi, there!",
         user: "Amando",
         date: new Date()
     },
     {
-        id: randomUUID(),
+        id: 2,
         text: "Hello World!",
         user: "Charles",
         date: new Date()
@@ -18,7 +17,6 @@ const messages = [
 ]
 
 indexRouter.get('/', (req, res) => {
-    console.log(messages)
     res.render('index', { messages: messages, title: 'Home Page'} )
 })
 
@@ -27,7 +25,7 @@ indexRouter.get('/new', (req, res) => {
 })
 
 indexRouter.get('/message/:id', (req, res) => {
-    const targetId = req.params.id;
+    const targetId = Number(req.params.id);
     const message = messages.find(message => message.id === targetId);
 
     if (!message) {
@@ -43,7 +41,7 @@ indexRouter.get('/message/:id', (req, res) => {
 indexRouter.post('/new', (req, res) => {
     const text = req.body.message;
     const user = req.body.author;
-    let messageID = randomUUID();
+    let messageID = messages.length + 1;
     messages.push({id: messageID, text: text, user: user, date: new Date()});
     res.redirect('/');
 })
