@@ -14,7 +14,7 @@
         <div class="details-container">
             <p>Message: <%= message.text %></p>
             <p>Sent By: <%= message.user %></p>
-            <p>Time: <%= message.date %></p>
+            <p>Time: <%= message.date.toLocaleString() %></p>
         </div>
     <% } %>
     <% else { %>
