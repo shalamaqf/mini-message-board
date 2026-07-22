@@ -18,11 +18,11 @@ const messages = [
 ]
 
 indexRouter.get('/', (req, res) => {
-    res.render('index', { messages: messages} )
+    res.render('index', { messages: messages, title: 'Home Page'} )
 })
 
 indexRouter.get('/new', (req, res) => {
-    res.render('new-message')
+    res.render('new-message', { title: 'Add New Message' })
 })
 
 indexRouter.post('/new', (req, res) => {
