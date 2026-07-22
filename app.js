@@ -15,7 +15,7 @@ const indexRouter = require('./routes/indexRouter');
 
 app.use('/', indexRouter);
 app.use((req, res, next) => {
-    res.status(404).render('404');
+    res.status(404).render('404', { title: `Page's Not Exist (404)` });
 })
 
 
