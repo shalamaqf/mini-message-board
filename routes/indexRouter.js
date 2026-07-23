@@ -1,10 +1,7 @@
 const { Router } = require('express');
 const indexRouter = Router();
-const messages = require('../db')
-const { getMessageById, 
-        postMessage, 
-        getHomePage, 
-        getAddNewMessagePage } = require('../controller/messageController')
+const { getMessageById, postMessage } = require('../controller/messageController');
+const { getHomePage, getAddNewMessagePage } = require('../controller/pageController');
 
 
 indexRouter.get('/', getHomePage);
