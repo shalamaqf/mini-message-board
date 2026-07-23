@@ -11,4 +11,12 @@ function getMessageById(req, res) {
     res.render('message-details', { message: message, title: `Message's Details`});
 }
 
-module.exports = { getMessageById };
+function postMessage(req, res) {
+    const text = req.body.message;
+    const user = req.body.author;
+    let messageID = messages.length + 1;
+    messages.push({id: messageID, text: text, user: user, date: new Date()});
+    res.redirect('/');
+}
+
+module.exports = { getMessageById, postMessage };

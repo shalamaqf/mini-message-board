@@ -1,7 +1,7 @@
 const { Router } = require('express');
 const indexRouter = Router();
 const messages = require('../db')
-const { getMessageById } = require('../controller/messageController')
+const { getMessageById, postMessage } = require('../controller/messageController')
 
 
 indexRouter.get('/', (req, res) => {
@@ -14,12 +14,6 @@ indexRouter.get('/new', (req, res) => {
 
 indexRouter.get('/message/:id', getMessageById);
 
-indexRouter.post('/new', (req, res) => {
-    const text = req.body.message;
-    const user = req.body.author;
-    let messageID = messages.length + 1;
-    messages.push({id: messageID, text: text, user: user, date: new Date()});
-    res.redirect('/');
-})
+indexRouter.post('/new', postMessage);
 
 module.exports = indexRouter;
