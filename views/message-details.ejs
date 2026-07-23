@@ -6,15 +6,17 @@
 <body>
     <%- include('partials/header') %>
 
-    <h1>Details:</h1>
+    <div class="content-details-container">
+        <h1>Details:</h1>
 
-    <% if (message != undefined) { %>
-        <div class="details-container">
-            <p>Message: <%= message.text %></p>
-            <p>Sent By: <%= message.user %></p>
-            <p>Time: <%= message.date.toLocaleString() %></p>
-        </div>
-    <% } %>
+        <% if (message != undefined) { %>
+            <div class="details-container">
+                <p>Message: <%= message.text %></p>
+                <p>Sent By: <%= message.user %></p>
+                <p>Time: <%= message.date.toLocaleString() %></p>
+            </div>
+        <% } %>
+    </div>
 
     <%- include('partials/footer') %>
 </body>
