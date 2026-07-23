@@ -10,3 +10,5 @@ function getMessageById(req, res) {
 
     res.render('message-details', { message: message, title: `Message's Details`});
 }
+
+module.exports = { getMessageById };

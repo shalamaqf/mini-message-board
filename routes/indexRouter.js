@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const indexRouter = Router();
-const messages = require('../db');
+const messages = require('../db')
+const { getMessageById } = require('../controller/messageController')
 
 
 indexRouter.get('/', (req, res) => {
@@ -11,16 +12,7 @@ indexRouter.get('/new', (req, res) => {
     res.render('new-message', { title: 'Add New Message' })
 })
 
-indexRouter.get('/message/:id', (req, res) => {
-    const targetId = Number(req.params.id);
-    const message = messages.find(message => message.id === targetId);
-
-    if (!message) {
-        return res.status(404).render('message-not-found', { title: `Message's Not Found`})
-    }
-
-    res.render('message-details', { message: message, title: `Message's Details`});
-})
+indexRouter.get('/message/:id', getMessageById);
 
 indexRouter.post('/new', (req, res) => {
     const text = req.body.message;
