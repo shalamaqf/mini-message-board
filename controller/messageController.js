@@ -4,6 +4,10 @@ function getHomePage(req, res) {
     res.render('index', { messages: messages, title: 'Home Page'} );
 }
 
+function getAddNewMessagePage(req, res) {
+    res.render('new-message', { title: 'Add New Message' });
+}
+
 function getMessageById(req, res) {
     const targetId = Number(req.params.id);
     const message = messages.find(message => message.id === targetId);
@@ -23,4 +27,8 @@ function postMessage(req, res) {
     res.redirect('/');
 }
 
-module.exports = { getMessageById, postMessage, getHomePage };
+module.exports = 
+{   getMessageById, 
+    postMessage, 
+    getHomePage, 
+    getAddNewMessagePage };
