@@ -1,5 +1,9 @@
 const messages = require('../db');
 
+function getHomePage(req, res) {
+    res.render('index', { messages: messages, title: 'Home Page'} );
+}
+
 function getMessageById(req, res) {
     const targetId = Number(req.params.id);
     const message = messages.find(message => message.id === targetId);
@@ -19,4 +23,4 @@ function postMessage(req, res) {
     res.redirect('/');
 }
 
-module.exports = { getMessageById, postMessage };
+module.exports = { getMessageById, postMessage, getHomePage };
