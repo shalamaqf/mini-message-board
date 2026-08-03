@@ -1,8 +1,8 @@
-const messages = require('../db');
+const db = require("../db/queries");
 
-function getMessageById(req, res) {
+async function getMessageById(req, res) {
     const targetId = Number(req.params.id);
-    const message = messages.find(message => message.id === targetId);
+    const message = await db.searchMessage(targetId);
 
     if (!message) {
         return res.status(404).render('message-not-found', { title: `Message's Not Found`})
@@ -11,11 +11,10 @@ function getMessageById(req, res) {
     res.render('message-details', { message: message, title: `Message's Details`});
 }
 
-function postMessage(req, res) {
+async function postMessage(req, res) {
     const text = req.body.message;
     const user = req.body.author;
-    let messageID = messages.length + 1;
-    messages.push({id: messageID, text: text, user: user, date: new Date()});
+    await db.insertMessage(text, user);
     res.redirect('/');
 }
 
