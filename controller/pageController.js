@@ -1,10 +1,11 @@
-const messages = require('../db');
+const db = require("../db/queries");
 
-function getHomePage(req, res) {
-    res.render('index', { messages: messages, title: 'Home Page'} );
+async function getHomePage(req, res) {
+    const messages = await db.getAllMessages();
+    res.render('index', { messages, title: 'Home Page'} );
 }
 
-function getAddNewMessagePage(req, res) {
+async function getAddNewMessagePage(req, res) {
     res.render('new-message', { title: 'Add New Message' });
 }
 
