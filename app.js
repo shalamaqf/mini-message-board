@@ -4,6 +4,8 @@ const PORT = process.env.PORT || 3000;
 const path = require("node:path");
 const indexRouter = require('./routes/indexRouter');
 
+// load env variables
+require("dotenv").config();
 
 // set ejs
 app.set("views", path.join(__dirname, "views"));
