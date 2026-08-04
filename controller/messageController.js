@@ -13,8 +13,8 @@ async function getMessageById(req, res) {
 
 async function postMessage(req, res) {
     const text = req.body.message;
-    const user = req.body.author;
-    await db.insertMessage(text, user);
+    const username = req.body.author;
+    await db.insertMessage(text, username);
     res.redirect('/');
 }
 
